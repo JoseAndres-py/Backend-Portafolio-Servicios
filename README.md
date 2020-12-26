@@ -12,22 +12,24 @@ La siguiente sección deberá contar con los servicios que la empresa ofrece, es
 Se deberá implementar una sección inferior donde creen algunos casos de éxito o testimonios de las soluciones que ustedes ofrecen, donde con una foto, un texto y el nombre de la persona y/o empresa, van a referenciar porque su solución fue exitosa.
 Finalmente debe contar con un footer donde deberá estar toda la información de contacto, que podrían ser un par de correos electrónicos, las diferentes ciudades donde trabajan, un teléfono y celular (no utilizar números telefónicos reales), también contener un enlace al repositorio del proyecto final de github, el repositorio debe ser público.
 
+##Backend o Zona de Gestión
+El backend o la zona de gestión, deberá contar con la administración de los servicios que se van a visualizar en el sitio web principal o Portafolio de Servicios, Los nombres de las rutas, componentes y demás aspectos técnicos están definidos en la sección requisitos obligatorios estructura backend.
+El backend implementará el módulo de autenticación realizado en la semana 3 para validar los usuarios y sus roles, la zona de administración debe contar inicialmente con la gestión o CRUD de Artículos y Categorías (como dos elementos de nombre genérico independiente del servicios que se vaya a implementar) y posteriormente se implementará la gestión de usuarios allí mismo. Para el manejo de rutas, se debe implementar el router-view con el fin de sacar provecho del poder de Vue y su característica de SPA. El back deberá proveer una API que permitirá realizar las diferentes peticiones a sus componentes desde el landing page
 
-
-Se cuenta un una ruta por medio de método post para el inicio de sesión de la siguiente manera:
-
+##Login Endpoint:
+Se debe contar un una ruta por medio de método post para el inicio de sesión de la siguiente manera:
 
 ```js
-'/api/auth/signin'
+'/api/usuario/login'
 ```
 
 Cuando esta ruta es consumida desde el frontend la api debe responder en tres casos diferentes :
 
 
-1. Cuando el usuario se loguea exitosamente, debe responder con un status 200 y propiedad accessToken de la siguiente manera :
+1. Cuando el usuario se loguea exitosamente ,debe responder con un status 200 y propiedad tokenReturn de la siguiente manera :
 
 ```js
-res.status(200).send({ accessToken: token });
+res.status(200).json({ user, tokenReturn });
 ```
 
 2. El usuario no existe en la bases de dato, debe responder con un status 404 de la siguiente manera:
@@ -41,6 +43,99 @@ res.status(404).send('User Not Found.');
 ```js
 res.status(401).send({ auth: false, accessToken: null, reason: "Invalid Password!" });
 ```
+
+##Categorías Endpoints:
+1. Se debe contar un una ruta por medio de método post para listar las categorias de la siguiente manera:
+```js
+'/api/categoria/list'
+```
+
+- Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
+
+```js
+res.status(200);
+```
+
+2. Se debe contar un una ruta por medio de método post para agregar una nueva categoría de la siguiente manera:
+```js
+'/api/categoria/add'
+```
+
+- Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
+
+```js
+res.status(200);
+```
+
+
+3. Se debe contar un una ruta por medio de método post para activar estado del categoría de la siguiente manera:
+```js
+'/api/categoria/activate'
+```
+
+- Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
+
+```js
+res.status(200);
+```
+
+4. Se debe contar un una ruta por medio de método post para desactivar estado del categoría de la siguiente manera:
+```js
+'/api/categoria/deactivate'
+```
+
+- Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
+
+```js
+res.status(200);
+```
+
+##Aericulos Endpoints:
+1. Se debe contar un una ruta por medio de método post para listar los articulos de la siguiente manera:
+```js
+'/api/articulo/list'
+```
+
+- Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
+
+```js
+res.status(200);
+```
+
+2. Se debe contar un una ruta por medio de método post para agregar un nuevo articulo de la siguiente manera:
+```js
+'/api/articulo/add'
+```
+
+- Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
+
+```js
+res.status(200);
+```
+
+
+3. Se debe contar un una ruta por medio de método post para activar estado del articulo de la siguiente manera:
+```js
+'/api/articulo/activate'
+```
+
+- Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
+
+```js
+res.status(200);
+```
+
+4. Se debe contar un una ruta por medio de método post para desactivar estado del articulo de la siguiente manera:
+```js
+'/api/articulo/deactivate'
+```
+
+- Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
+
+```js
+res.status(200);
+```
+
 
 ## Bases de datos 
 
@@ -66,7 +161,13 @@ En el directorio config/config.json encontrarán las credenciales para la conexi
 }
 ```
 
-Queda de elección de cada grupo utilizar la bases de datos localmente que deseen ya sea la predeterminada en el archivo o utilizar mysql como se explicó en las sesiones anteriores, estas modificacion solo se deben realizar en el objeto “development”, las otras por ningún motivo deben ser modificadas esto podría alterar el resultado de la prueba y por ende su calificación.
+Queda de elección utilizar la bases de datos localmente que deseen ya sea la predeterminada en el archivo o utilizar mysql como se explicó en las sesiones anteriores, estas modificacion solo se deben realizar en el objeto “development”, las otras por ningún motivo deben ser modificadas esto podría alterar el resultado de la prueba y por ende su calificación.
 
-## Modelo:
-El modelo se creó por medio de sequelize cli con los atributos obligatorios : name,email , password de tipo string.
+## Modelos:
+Los modelosse creó por medio de sequelize cli con los atributos obligatorios.
+
+###Modelo Usuario:
+```cmd
+npx sequelize-cli model:generate --name Usuario --attributes rol:string,nombre:string,password:string,email:string,estado:integer
+```
+
