@@ -16,7 +16,7 @@ Finalmente debe contar con un footer donde deberá estar toda la información de
 El backend o la zona de gestión, deberá contar con la administración de los servicios que se van a visualizar en el sitio web principal o Portafolio de Servicios, Los nombres de las rutas, componentes y demás aspectos técnicos están definidos en la sección requisitos obligatorios estructura backend.
 El backend implementará el módulo de autenticación realizado en la semana 3 para validar los usuarios y sus roles, la zona de administración debe contar inicialmente con la gestión o CRUD de Artículos y Categorías (como dos elementos de nombre genérico independiente del servicios que se vaya a implementar) y posteriormente se implementará la gestión de usuarios allí mismo. Para el manejo de rutas, se debe implementar el router-view con el fin de sacar provecho del poder de Vue y su característica de SPA. El back deberá proveer una API que permitirá realizar las diferentes peticiones a sus componentes desde el landing page
 
-##Login Endpoint:
+## Login Endpoint:
 Se debe contar un una ruta por medio de método post para el inicio de sesión de la siguiente manera:
 
 ```js
@@ -90,7 +90,7 @@ res.status(200);
 res.status(200);
 ```
 
-##Aericulos Endpoints:
+## Articulos Endpoints:
 1. Se debe contar un una ruta por medio de método post para listar los articulos de la siguiente manera:
 ```js
 '/api/articulo/list'
@@ -166,8 +166,26 @@ Queda de elección utilizar la bases de datos localmente que deseen ya sea la pr
 ## Modelos:
 Los modelosse creó por medio de sequelize cli con los atributos obligatorios.
 
-###Modelo Usuario:
+### Modelo Usuario:
+
 ```cmd
 npx sequelize-cli model:generate --name Usuario --attributes rol:string,nombre:string,password:string,email:string,estado:integer
 ```
+Como podemos observar tenemos nuevos atributos uno de ellos es rol , lo utilizaremos para manejar restricciones de usuario según su rol, los roles serán:
+- Administrador:con acceso total al sistema
+- Vendedor:solo para acceso al módulo de ventas.
+- Almacenero:solo acceso al módulo de ingresos ,artículos y categorías.
+
+### Modelo Categoria:
+
+```cmd
+npx sequelize-cli model:generate --name Categoria --attributes nombre:string,descripcion:string,estado:integer
+```
+
+### Modelo Artículos:
+
+```cmd
+npx sequelize-cli model:generate --name Articulo --attributes codigo:string,nombre:string,descripcion:string,estado:integer,categoriaId:integer
+```
+
 
