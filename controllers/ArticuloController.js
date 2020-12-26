@@ -30,7 +30,6 @@ exports.list = async(req, res, next) => {
 exports.add = async(req, res, next) => {
     try {
         const articulo = await db.Articulo.findOne({where: {nombre: req.body.nombre}}); // Limpiar strings - Tildes Minisculas - Sin espacios
-        
         if(articulo){
             res.status(409).send({
                 message: 'Sorry your request has a conflict whit our system state, maybe the name exist'
@@ -51,14 +50,21 @@ exports.update = async(req, res, next) => {
     try {
         const articulo = await db.Articulo.findOne({where: {id: req.body.id}});
         if(articulo){
-            const articulo = await db.Articulo.update({codigo: req.body.codigo, nombre: req.body.nombre, descripcion: req.body.descripcion, categoriaId: req.body.categoriaId},
-                {
-                    where:{
-                        id: req.body.id
-                    }
-                    //returning: true
-                });
-                res.status(200).json(articulo);
+            console.log(req.body)
+            const articulo = await db.Articulo.update({
+                codigo: req.body.codigo, 
+                nombre: req.body.nombre, 
+                descripcion: req.body.descripcion, 
+                categoriaId: req.body.categoriaId,
+                imgPath: req.body.imgPath
+            },
+            {
+                where:{
+                    id: req.body.id
+                }
+                //returning: true
+            });
+            res.status(200).json(articulo);
         }else{
             res.status(404).send({
                 message: 'Article not found'

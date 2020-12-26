@@ -1,7 +1,7 @@
-const routerx = require('express-promise-router');
-const userController = require('../../controllers/UsuarioController.js');
-
-const router = routerx();
+const router = require('express').Router();
+const userController = require('../../controllers/UserController.js');
+const magnamentController = require('../../controllers/managementController.js');
+const auth = require('../../middlewares/auth.js');
 
 // Route Api - User 
 router.get('/list', /*auth.verificarVendedor,*/ userController.list);
