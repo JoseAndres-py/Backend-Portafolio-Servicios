@@ -19,122 +19,126 @@ El backend implementará el módulo de autenticación realizado en la semana 3 p
 ## Login Endpoint:
 Se debe contar un una ruta por medio de método post para el inicio de sesión de la siguiente manera:
 
-```js
-'/api/usuario/login'
-```
+    ```js
+    '/api/usuario/login'
+    ```
 
 Cuando esta ruta es consumida desde el frontend la api debe responder en tres casos diferentes :
 
 
 1. Cuando el usuario se loguea exitosamente ,debe responder con un status 200 y propiedad tokenReturn de la siguiente manera :
 
-```js
-res.status(200).json({ user, tokenReturn });
-```
+    ```js
+    res.status(200).json({ user, tokenReturn });
+    ```
 
 2. El usuario no existe en la bases de dato, debe responder con un status 404 de la siguiente manera:
 
-```js
-res.status(404).send('User Not Found.');
-```
+    ```js
+    res.status(404).send('User Not Found.');
+    ```
 
 3. El usuario ingresa una contraseña inválida, debe responder con un status 401 de la siguiente manera:
 
-```js
-res.status(401).send({ auth: false, accessToken: null, reason: "Invalid Password!" });
-```
+    ```js
+    res.status(401).send({ auth: false, accessToken: null, reason: "Invalid Password!" });
+    ```
 
 ##Categorías Endpoints:
 1. Se debe contar un una ruta por medio de método post para listar las categorias de la siguiente manera:
-```js
-'/api/categoria/list'
-```
+
+    ```js
+    '/api/categoria/list'
+    ```
 
 - Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
 
-```js
-res.status(200);
-```
+    ```js
+    res.status(200);
+    ```
 
 2. Se debe contar un una ruta por medio de método post para agregar una nueva categoría de la siguiente manera:
-```js
-'/api/categoria/add'
-```
+    ```js
+    '/api/categoria/add'
+    ```
 
 - Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
 
-```js
-res.status(200);
-```
+    ```js
+    res.status(200);
+    ```
 
 
 3. Se debe contar un una ruta por medio de método post para activar estado del categoría de la siguiente manera:
-```js
-'/api/categoria/activate'
-```
+
+    ```js
+    '/api/categoria/activate'
+    ```
 
 - Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
 
-```js
-res.status(200);
-```
+    ```js
+    res.status(200);
+    ```
 
 4. Se debe contar un una ruta por medio de método post para desactivar estado del categoría de la siguiente manera:
-```js
-'/api/categoria/deactivate'
-```
+
+    ```js
+    '/api/categoria/deactivate'
+    ```
 
 - Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
 
-```js
-res.status(200);
-```
+    ```js
+    res.status(200);
+    ```
 
 ## Articulos Endpoints:
 1. Se debe contar un una ruta por medio de método post para listar los articulos de la siguiente manera:
-```js
-'/api/articulo/list'
-```
+    ```js
+    '/api/articulo/list'
+    ```
 
 - Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
 
-```js
-res.status(200);
-```
+    ```js
+    res.status(200);
+    ```
 
 2. Se debe contar un una ruta por medio de método post para agregar un nuevo articulo de la siguiente manera:
-```js
-'/api/articulo/add'
-```
+
+    ```js
+    '/api/articulo/add'
+    ```
 
 - Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
 
-```js
-res.status(200);
-```
+    ```js
+    res.status(200);
+    ```
 
 
 3. Se debe contar un una ruta por medio de método post para activar estado del articulo de la siguiente manera:
-```js
-'/api/articulo/activate'
-```
+    ```js
+    '/api/articulo/activate'
+    ```
 
 - Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
 
-```js
-res.status(200);
-```
+    ```js
+    res.status(200);
+    ```
 
 4. Se debe contar un una ruta por medio de método post para desactivar estado del articulo de la siguiente manera:
-```js
-'/api/articulo/deactivate'
-```
+    ```js
+    '/api/articulo/deactivate'
+    ```
 
 - Cuando la solicitud se procesa correctamente el sistema deberá responder con un status 200:
 
-```js
-res.status(200);
-```
+    ```js
+    res.status(200);
+    ```
 
 
 ## Bases de datos 
