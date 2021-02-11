@@ -50,7 +50,7 @@ exports.update = async(req, res, next) => {
     try {
         const articulo = await db.Articulo.findOne({where: {id: req.body.id}});
         if(articulo){
-            console.log(req.body)
+            //console.log(req.body)
             const articulo = await db.Articulo.update({
                 codigo: req.body.codigo, 
                 nombre: req.body.nombre, 

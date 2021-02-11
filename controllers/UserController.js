@@ -5,7 +5,7 @@ const tokenServices = require('../services/token');
 
 exports.login = async(req, res, next) => {
     try {
-        console.log(req.body)
+        //console.log(req.body)
         const user = await db.user.findOne({where: {email: req.body.email}});
         if(user){
             const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
@@ -56,7 +56,7 @@ exports.list = async(req, res, next) => {
 
 exports.add = async(req, res, next) => {
     try {
-        console.log(req.body)
+        //console.log(req.body)
         const user = await db.user.findOne({where: {email: req.body.email}});
         if(user){
             res.status(409).send({
@@ -77,7 +77,7 @@ exports.add = async(req, res, next) => {
 
 exports.update = async(req, res, next) => {
     try {
-        console.log(req.body)
+        //console.log(req.body)
         const user = await db.user.findOne({where: {id: req.body.id}});
         if(user){
             const user = await db.user.update({name: req.body.name, email: req.body.email, rol: req.body.rol},
@@ -128,7 +128,7 @@ exports.activate = async(req, res, next) => {
 
 exports.deactivate = async(req, res, next) => {
     try {
-        console.log(req.body)
+        //console.log(req.body)
         const usuario = await db.user.findOne({where: {id: req.body.id}});
         if(usuario){
             const usuario = await db.user.update({estado: 0},

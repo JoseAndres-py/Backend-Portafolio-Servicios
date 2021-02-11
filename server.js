@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 '/api/auth/signin'
 */
 app.get('/', function(req, res) {
-    console.log("Estructura base del proyecto backend");
+    //console.log("Estructura base del proyecto backend");
     res.send("Estructura base del proyecto backend");
 });
 
