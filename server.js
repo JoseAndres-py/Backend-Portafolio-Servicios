@@ -8,6 +8,9 @@ const db = require('./models');
 const apiRouter = require('./routes');
 const app = express()
 const bodyParser = require('body-parser');
+
+const port = process.env.PORT || 3000;
+
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Origin", "*");
@@ -34,7 +37,7 @@ app.get('/', function(req, res) {
 app.use('/api', apiRouter);
 
 
-app.set('PORT', 3000);
+app.set('PORT', port);
 
 app.listen(app.get('PORT'), () => {
     console.log(`Running on http://localhost:${app.get('PORT')}`)
